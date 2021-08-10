@@ -1,17 +1,21 @@
 import React from "react";
 import ReactDom from "react-dom";
 
-function BookList() {
-  return (
-    <section>
-      <Book />
-      <Book />
-    </section>
-  );
-}
+// Data
+import { books } from "./books";
+import Book from "./componets/Book";
 
-const Book = () => {
-  return <article>this is a book</article>;
-};
+//CSS
+import "./index.css";
+
+function BookList() {
+    return (
+        <section className="booklist">
+            {books.map((book) => {
+                return <Book key={book.id} {...book} />;
+            })}
+        </section>
+    );
+}
 
 ReactDom.render(<BookList />, document.getElementById("root"));
